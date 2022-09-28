@@ -1,0 +1,5 @@
+-fix sidescroll
+-add more floating items
+-replace placeholder textures
+-replace placeholder info text
+-replace font
