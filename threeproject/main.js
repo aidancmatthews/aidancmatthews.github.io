@@ -23,9 +23,6 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(CAMERA_START_Z);
 
-console.log('startPos', camera.position);
-console.log('startRot', camera.rotation);
-
 renderer.render(scene, camera);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
@@ -104,11 +101,7 @@ function scrollCamera() {
   const t = document.body.getBoundingClientRect().top < 0 ? document.body.getBoundingClientRect().top : 0;
   console.log(t);
   moon.rotation.x += 0.008;
-  //moon.rotation.y += 0.0035;
   moon.rotation.z += 0.008;
-
-  // jeff.rotation.y += 0.01;
-  // jeff.rotation.z += 0.01;
 
   camera.position.z = CAMERA_START_Z + t * -0.01;
   camera.position.x = t * -0.0002;
@@ -126,8 +119,6 @@ function reposCamera() {
       if (timeHandling >= 60) { // 3 second movement
         clearInterval(camMove);
         camera.rotation.x = 1.5; // correct for Math.PI inaccurary
-        console.log('altRot', camera.rotation);
-        console.log('altPos', camera.position);
       }
       camera.rotation.x += (Math.PI / 120);
       camera.position.y += 0.375;
@@ -138,8 +129,6 @@ function reposCamera() {
       if (timeHandling >= 60) { // 3 second movement
         clearInterval(camMove);
         camera.rotation.x = 0; // correct for Math.PI inaccurary
-        console.log('defRot', camera.rotation);
-        console.log('defPos', camera.position);
       }
       camera.rotation.x -= (Math.PI / 120);
       camera.position.y -= 0.375;
