@@ -7,6 +7,8 @@ import * as THREE from 'three';
 const CAMERA_START_Z = 50;
 const CAMERA_START_X = 0;
 const CAMERA_START_Y = 0;
+const OBJECT_ROT_XZ = 0.008;
+const OBJECT_ROT_Y = 0.0035;
 const NUM_STARS = 400;
 
 const scene = new THREE.Scene();
@@ -20,6 +22,9 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 camera.position.setZ(CAMERA_START_Z);
+
+console.log('startPos', camera.position);
+console.log('startRot', camera.rotation);
 
 renderer.render(scene, camera);
 
@@ -59,16 +64,19 @@ Array(NUM_STARS).fill().forEach(addStar);
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
 
-// Avatar
+// RoseCube
 
-// const jeffTexture = new THREE.TextureLoader().load('jeff.png');
+const roseTexture = new THREE.TextureLoader().load('rose.jpg');
 
-// const jeff = new THREE.Mesh(
-//   new THREE.BoxGeometry(3, 3, 3),
-//   new THREE.MeshBasicMaterial( { map: jeffTexture })
-// );
+const rose = new THREE.Mesh(
+  new THREE.BoxGeometry(3, 3, 3),
+  new THREE.MeshBasicMaterial( { map: roseTexture })
+);
 
-// scene.add(jeff);
+scene.add(rose);
+
+rose.position.set(0, 35, 50);
+rose.rotation.set(Math.PI / 4, Math.PI / 4, 0);
 
 // Moon
 
@@ -112,12 +120,31 @@ let defaultView = true;
 
 
 function reposCamera() {
+  let timeHandling = 0;
   if (defaultView) {
-    camera.rotation.set(0, 0, Math.PI / 2);
-    camera.position.set(0, 30, 0);
+    let camMove = setInterval(() => {
+      if (timeHandling >= 60) { // 3 second movement
+        clearInterval(camMove);
+        camera.rotation.x = 1.5; // correct for Math.PI inaccurary
+        console.log('altRot', camera.rotation);
+        console.log('altPos', camera.position);
+      }
+      camera.rotation.x += (Math.PI / 120);
+      camera.position.y += 0.375;
+      timeHandling++;
+    }, 25)
   } else {
-    camera.rotation.set(0, 0, 0);
-    camera.position.set(CAMERA_START_X, CAMERA_START_Y, CAMERA_START_Z);
+    let camMove = setInterval(() => {
+      if (timeHandling >= 60) { // 3 second movement
+        clearInterval(camMove);
+        camera.rotation.x = 0; // correct for Math.PI inaccurary
+        console.log('defRot', camera.rotation);
+        console.log('defPos', camera.position);
+      }
+      camera.rotation.x -= (Math.PI / 120);
+      camera.position.y -= 0.375;
+      timeHandling++;
+    }, 25)
   }
   defaultView = !defaultView;
 }
@@ -129,9 +156,12 @@ document.body.onkeydown = reposCamera;
 function animate() {
   requestAnimationFrame( animate );
 
-  torus.rotation.x += 0.008;
-  torus.rotation.y += 0.0035;
-  torus.rotation.z += 0.008;
+  torus.rotation.x += OBJECT_ROT_XZ;
+  torus.rotation.y += OBJECT_ROT_Y;
+  torus.rotation.z += OBJECT_ROT_XZ;
+
+  rose.rotation.z += 5 * OBJECT_ROT_XZ;
+  rose.rotation.y += 5 * OBJECT_ROT_Y;
 
   //controls.update();
 
