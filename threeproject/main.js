@@ -26,7 +26,9 @@ camera.position.setZ(CAMERA_START_Z);
 renderer.render(scene, camera);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({ color: 0x7851a9 });
+const material = new THREE.MeshStandardMaterial({
+  color: 0x7851a9
+});
 const torus = new THREE.Mesh(geometry, material);
 
 scene.add(torus);
@@ -47,10 +49,12 @@ scene.add(pointLight, ambientLight);
 
 function addStar() {
   const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial( { color: 0xffffff });
-  const star = new THREE.Mesh( geometry, material );
+  const material = new THREE.MeshStandardMaterial({
+    color: 0xffffff
+  });
+  const star = new THREE.Mesh(geometry, material);
 
-  const [x, y, z] = Array(3).fill().map(() => 3 * THREE.MathUtils.randFloatSpread( 100 ) );
+  const [x, y, z] = Array(3).fill().map(() => 3 * THREE.MathUtils.randFloatSpread(100));
 
   star.position.set(x, y, z);
   scene.add(star);
@@ -67,7 +71,9 @@ const roseTexture = new THREE.TextureLoader().load('rose.jpg');
 
 const rose = new THREE.Mesh(
   new THREE.BoxGeometry(3, 3, 3),
-  new THREE.MeshBasicMaterial( { map: roseTexture })
+  new THREE.MeshBasicMaterial({
+    map: roseTexture
+  })
 );
 
 scene.add(rose);
@@ -82,7 +88,7 @@ const normalTexture = new THREE.TextureLoader().load('normal.jpg');
 
 const moon = new THREE.Mesh(
   new THREE.SphereGeometry(15, 32, 32),
-  new THREE.MeshStandardMaterial( {
+  new THREE.MeshStandardMaterial({
     map: moonTexture,
     normalMap: normalTexture
   })
@@ -143,7 +149,7 @@ document.body.onscroll = scrollCamera;
 document.body.onkeydown = reposCamera;
 
 function animate() {
-  requestAnimationFrame( animate );
+  requestAnimationFrame(animate);
 
   torus.rotation.x += OBJECT_ROT_XZ;
   torus.rotation.y += OBJECT_ROT_Y;
@@ -154,7 +160,7 @@ function animate() {
 
   //controls.update();
 
-  renderer.render( scene, camera);
+  renderer.render(scene, camera);
 }
 
 animate();
