@@ -5,6 +5,8 @@ import * as THREE from 'three';
 //import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const CAMERA_START_Z = 50;
+const CAMERA_START_X = 0;
+const CAMERA_START_Y = 0;
 const NUM_STARS = 400;
 
 const scene = new THREE.Scene();
@@ -90,7 +92,7 @@ moon.position.y = 30;
 // jeff.position.z = -5;
 // jeff.position.x = 2;
 
-function moveCamera() {
+function scrollCamera() {
   const t = document.body.getBoundingClientRect().top < 0 ? document.body.getBoundingClientRect().top : 0;
   console.log(t);
   moon.rotation.x += 0.008;
@@ -105,7 +107,24 @@ function moveCamera() {
   camera.position.y = t * -0.0002;
 }
 
-document.body.onscroll = moveCamera;
+let defaultView = true;
+
+
+
+function reposCamera() {
+  if (defaultView) {
+    camera.rotation.set(0, 0, Math.PI / 2);
+    camera.position.set(0, 30, 0);
+  } else {
+    camera.rotation.set(0, 0, 0);
+    camera.position.set(CAMERA_START_X, CAMERA_START_Y, CAMERA_START_Z);
+  }
+  defaultView = !defaultView;
+}
+
+document.body.onscroll = scrollCamera;
+
+document.body.onkeydown = reposCamera;
 
 function animate() {
   requestAnimationFrame( animate );
