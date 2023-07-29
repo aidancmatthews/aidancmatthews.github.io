@@ -1,61 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Aidan's Website</title>
-  </head>
-  <body>
-    <canvas id="bg"></canvas>
 
-    <main>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aidan's Website</title>
+</head>
 
-      <!-- <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
+<body>
+  <canvas id="bg"></canvas>
 
-      <header>
-        <p>I am</p><span id="ageDisplay"></span><p>years old</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header>
-      <header>
-        <h1>Aidan Matthews</h1>
-        <p>Welcome to my website!</p>
-      </header> -->
+  <main>
 
+    <section class="left-section">
+      <h1 class="intro-container">Aidan Matthews</h1>
+      <div>
+        <img id="github-logo" src="./github-mark-white.png" />
+        <img id="linkedin-logo" src="./linkedin.webp" />
+      </div>
+      <h4 class="intro-container">Welcome to my website!</h4>
+    </section>
 
-    </main>
+    <section class="left-section">
+      <p>I am <span id="ageDisplay"></span> years old and currently studying at Rose-Hulman Institute of Technology</p>
+    </section>
 
-    <script type="module" src="/main.js"></script>
-    <script type="text/javascript" src="scripts/gimmicks.js"></script>
-  </body>
+    <section class="left-section">
+      <h2>Contact Information</h2>
+      <ul>
+        <li>Phone #: (317)-712-6091</li>
+        <li>Email: <a href="mailto:matthea1@rose-hulman.edu">matthea1@rose-hulman.edu</a></li>
+        <li>LinkedIn: <a href="www.linkedin.com/in/aidan-cole-matthews">www.linkedin.com/in/aidan-cole-matthews</a></li>
+        <li>GitHub: <a href="www.github.com/aidancmatthews">www.github.com/aidancmatthews</a></li>
+      </ul>
+    </section>
+
+    <section class="left-section">
+      <h2>Education</h2>
+      <ul>
+        <li>Rose-Hulman Institute of Technology, May 2024</li>
+        <li>B.S. Software Engineering</li>
+        <li>Minor in Music</li>
+      </ul>
+    </section>
+
+    <section class="full">
+      <h2>Technical Skills</h2>
+      <div class="list-container">
+        <ul class="left-list">
+          <li>Programming Languages: , HTML, CSS, Node.js, React, React Native, C#, .NET Core, Python, C, Java,
+            Racket, Go</li>
+          <li>JavaScript</li>
+        </ul>
+        <ul class="right-list">
+          <li>Tools: AWS, SQL Server, SQLite 3, Firebase, Agile, DevOps, Git, Kali Linux, Debian Linux, Vim, Android
+            Studio, Visual Studio</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="full">
+      <h2>Experience</h2>
+      <ul>
+        <li>
+          <strong>Booz Allen Hamilton</strong> - Software Engineering Intern (Jun. 2023 – Present)
+          <ul>
+            <li>Created a portable, lightweight packet sniffing solution using Go, Kali Linux, Android Studio, and
+              SQLite 3</li>
+            <li>Maintained WebAPI endpoints for data export to external mobile application</li>
+            <li>Implemented custom packet processing for Wi-Fi and Bluetooth analysis</li>
+            <br>
+          </ul>
+        </li>
+        <li>
+          <strong>Flexware Innovation</strong> - Software Engineering Intern, Products Team (Jun. 2022 – May 2023)
+          <ul>
+            <li>Enhanced and extended the Acumence Platform Client, an enterprise application using React, .NET Core,
+              and SQL server implemented at 52 locations in 22 countries</li>
+            <li>Created WebAPI endpoints for database management</li>
+            <br>
+          </ul>
+        </li>
+        <li>
+          <strong>Rose-Hulman Ventures</strong> - Software Engineering Intern (Jun. 2021 – May 2022)
+          <ul>
+            <li>Designed a modernized, cross-platform mobile application using React Native</li>
+            <li>Leveraged Firebase and Firestore for authentication and data manipulation</li>
+            <li>Prepared optimized schema for use within NoSQL database</li>
+            <br>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="full">
+      <h2>Organizations</h2>
+      <ul>
+        <li>Alpha Phi Omega Service Fraternity, Member (May 2023 – Present)</li>
+        <li>Rose-Hulman Scuba Club, Secretary (Sep 2022 - Present)</li>
+        <li>Rose-Hulman CSSE Department, Freshman Mentor (Sep 2022 – Present)</li>
+        <li>Terre Town Elementary, Volunteer Youth Coding Instructor (Dec 2021 – Present)</li>
+        <li>Kappa Theta Pi Professional Fraternity, Professional Development Presenter (Oct 2021 – Present)</li>
+        <li>Rose-Hulman Cryptocurrency Club, Vice President (Sep 2021 – Present)</li>
+      </ul>
+    </section>
+
+    <section class="full">
+      <h2>Projects</h2>
+      <ul>
+        <li>Playlister: Webapp for aggregating user-created Spotify playlists using Firebase and Node.js</li>
+        <li>Gym Management: Webapp for gym management using SQL Server and Node.js</li>
+        <li>Java Jetpac: Java game inspired by early 1980s video game “Jetpac”</li>
+        <li>RoseLint: Java bytecode linter for detecting code antipatterns and design flaws using ObjectWeb ASM</li>
+        <li>Boulder Simulator: Unity game with physics, directional audio support, and custom C# scripting</li>
+        <li>Image Convolution: Python application for blurring images through image convolution processes</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <script type="module" src="/main.js"></script>
+  <script type="text/javascript" src="scripts/gimmicks.js"></script>
+</body>
+
 </html>

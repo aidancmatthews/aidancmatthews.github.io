@@ -10,11 +10,17 @@ canvas {
 
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
-  --spacing: 350px;
+  --spacing: 150px;
 
   font-family: brandon-grotesque, sans-serif;
   font-weight: 400;
   font-style: normal;
+  scrollbar-width: none;
+  overflow-x: hidden;
+}
+
+:root::-webkit-scrollbar {
+  display: none;
 }
 
 
@@ -25,9 +31,14 @@ main {
   position: absolute;
   width: 100%;
 
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+
   display: grid;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(20, 1fr);
 }
+
+
 
 h1,
 h2,
@@ -40,19 +51,55 @@ blockquote {
 
 header {
   background: var(--dark-bg);
-  grid-column: 2 / span 5;
+  grid-column: 2 / span 8;
   font-size: 2.5rem;
   padding: 2rem;
   margin-bottom: var(--spacing);
 }
 
 section {
-  grid-column: 2 / 8;
-  padding: 1rem;
-  background: var(--dark-bg);
-  font-size: 1.25rem;
+  font-size: 1.75rem;
   line-height: 1.5;
+  padding: 1rem;
   margin-bottom: var(--spacing);
+}
+
+.full {
+  grid-column: 2 / 20;
+  background: var(--dark-bg);
+}
+
+.left-section {
+  grid-column: 2 / 10;
+  background: var(--dark-bg);
+}
+
+.list-container {
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.left-list {
+  grid-column: 2 / 5;
+}
+
+.right-list {
+  grid-column: 7 / 10;
+}
+
+#github-logo {
+  max-height: 3rem;
+  max-width: 3rem;
+  padding-bottom: 18px;
+}
+
+#linkedin-logo {
+  max-height: 5rem;
+  max-width: 5rem;
+}
+
+.intro-container {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 blockquote {
@@ -68,8 +115,4 @@ blockquote p {
   font-size: 4rem;
   display: inline;
   line-height: 1;
-}
-
-.left {
-  grid-column: 6 / 12;
 }

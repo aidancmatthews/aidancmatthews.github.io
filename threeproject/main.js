@@ -2,14 +2,9 @@ import './style.css'
 
 import * as THREE from 'three';
 
-//import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
 const CAMERA_START_Z = 50;
-const CAMERA_START_X = 0;
-const CAMERA_START_Y = 0;
 const OBJECT_ROT_XZ = 0.008;
 const OBJECT_ROT_Y = 0.0035;
-const NUM_STARS = 400;
 
 const scene = new THREE.Scene();
 
@@ -31,7 +26,6 @@ const material = new THREE.MeshStandardMaterial({
 });
 const torus = new THREE.Mesh(geometry, material);
 
-scene.add(torus);
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
@@ -39,28 +33,6 @@ pointLight.position.set(5, 5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 
 scene.add(pointLight, ambientLight);
-
-//const lightHelper = new THREE.PointLightHelper(pointLight);
-//const gridHelper = new THREE.GridHelper(200, 50);
-
-//scene.add(lightHelper, gridHelper);
-
-//const controls = new OrbitControls(camera, renderer.domElement);
-
-function addStar() {
-  const geometry = new THREE.SphereGeometry(0.25, 24, 24);
-  const material = new THREE.MeshStandardMaterial({
-    color: 0xffffff
-  });
-  const star = new THREE.Mesh(geometry, material);
-
-  const [x, y, z] = Array(3).fill().map(() => 3 * THREE.MathUtils.randFloatSpread(100));
-
-  star.position.set(x, y, z);
-  scene.add(star);
-}
-
-Array(NUM_STARS).fill().forEach(addStar);
 
 const spaceTexture = new THREE.TextureLoader().load('space.jpg');
 scene.background = spaceTexture;
@@ -100,9 +72,6 @@ moon.position.z = -50;
 moon.position.x = -70;
 moon.position.y = 30;
 
-// jeff.position.z = -5;
-// jeff.position.x = 2;
-
 function scrollCamera() {
   const t = document.body.getBoundingClientRect().top < 0 ? document.body.getBoundingClientRect().top : 0;
   console.log(t);
@@ -114,51 +83,14 @@ function scrollCamera() {
   camera.position.y = t * -0.0002;
 }
 
-let defaultView = true;
-
-
-
-function reposCamera() {
-  let timeHandling = 0;
-  if (defaultView) {
-    let camMove = setInterval(() => {
-      if (timeHandling >= 60) { // 3 second movement
-        clearInterval(camMove);
-        camera.rotation.x = 1.5; // correct for Math.PI inaccurary
-      }
-      camera.rotation.x += (Math.PI / 120);
-      camera.position.y += 0.375;
-      timeHandling++;
-    }, 25)
-  } else {
-    let camMove = setInterval(() => {
-      if (timeHandling >= 60) { // 3 second movement
-        clearInterval(camMove);
-        camera.rotation.x = 0; // correct for Math.PI inaccurary
-      }
-      camera.rotation.x -= (Math.PI / 120);
-      camera.position.y -= 0.375;
-      timeHandling++;
-    }, 25)
-  }
-  defaultView = !defaultView;
-}
-
 document.body.onscroll = scrollCamera;
 
-document.body.onkeydown = reposCamera;
 
 function animate() {
   requestAnimationFrame(animate);
 
-  torus.rotation.x += OBJECT_ROT_XZ;
-  torus.rotation.y += OBJECT_ROT_Y;
-  torus.rotation.z += OBJECT_ROT_XZ;
-
   rose.rotation.z += 5 * OBJECT_ROT_XZ;
   rose.rotation.y += 5 * OBJECT_ROT_Y;
-
-  //controls.update();
 
   renderer.render(scene, camera);
 }
