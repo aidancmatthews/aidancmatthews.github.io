@@ -30,10 +30,8 @@ main {
   z-index: 99;
   position: absolute;
   width: 100%;
-
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
-
   display: grid;
   grid-template-columns: repeat(20, 1fr);
 }
